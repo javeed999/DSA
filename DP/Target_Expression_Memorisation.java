@@ -41,3 +41,58 @@ public class Solution {
         
     }
 }
+
+
+
+
+// countValidExpressionsMemo(index, target, arr, dp, offset) {
+//     /* Base Case: If index is -1, check if the target is zero */
+//     if index == -1 {
+//         if target == 0 {
+//             return 1  /* Found a valid expression */
+//         }    
+//         return 0      /* No valid expression */
+//     } 
+    
+//     /* Check if result for this state is already computed */
+//     if dp[index][target + offset] != -1 {
+//         return dp[index][target + offset]
+//     } 
+    
+//     /* Recursive case: Explore adding '+' or '-' before the current element */
+//     includeAsPlus = countValidExpressionsMemo(index - 1, target - arr[index], arr, dp, offset)
+//     includeAsMinus = countValidExpressionsMemo(index - 1, target + arr[index], arr, dp, offset)
+
+//     /* Store the result in the memoization table */
+//     dp[index][target + offset] = includeAsPlus + includeAsMinus
+
+//     /* Return the computed result */
+//     return dp[index][target + offset]
+// } 
+
+// countValidExpressions(arr, target) {
+//     /* Calculate the total sum of the array */
+//     totalSum = sum(arr)
+
+//     /* If the target is outside the range [-totalSum, totalSum], return 0 */
+//     if abs(target) > totalSum {
+//         return 0  /* Target is not achievable */
+//     }
+
+//     /* Offset to handle negative targets */
+//     offset = totalSum
+
+//     /* Initialize the DP table with -1 (uncomputed states) */
+//     dp = initialize_2d_array(arr.size, 2 * totalSum + 1, -1)
+
+//     /* Call the recursive helper function starting from the last index */
+//     return countValidExpressionsMemo(arr.size() - 1, target, arr, dp, offset)
+// }
+
+
+
+
+
+
+
+
