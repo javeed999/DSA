@@ -113,3 +113,70 @@ public class Main {
     }
     */
 }
+
+
+// Single Array
+import java.util.*;
+
+public class Solution {
+    
+    // public static int f(int i,int weights[],int profits[],int capacity,int dp[][])
+    // {
+    //     if(i==0)
+    //     {
+    //         return (capacity/ weights[0])* profits[0];
+    //     }
+    //     if(dp[i][capacity]!=-1)
+    //         return dp[i][capacity];
+    //     int not_take=f(i-1,weights,profits,capacity,dp);
+    //     int take=0;
+    //     if(weights[i]<=capacity)
+    //         take=profits[i]+f(i,weights,profits,capacity-weights[i],dp);
+    // return dp[i][capacity]=Math.max(take,not_take);
+    
+    // }
+    
+  public int unboundedKnapsack(int[] weights, int[] profits, int capacity) {
+        //Write Your Code Here...
+        int n=weights.length;
+        // int dp[][]=new int[n][capacity+1];
+       int cur[]=new int[capacity+1];
+
+        for(int j=0;j<=capacity;j++)
+
+        {
+            cur[j]=(j/weights[0])*profits[0];
+        }
+        
+        for(int i=1;i<n;i++)
+        {
+            for(int j=0;j<=capacity;j++)
+            {
+                int not_take=cur[j];
+                int take=0;
+                if(weights[i]<=j)
+                    take=profits[i]+cur[j-weights[i]];
+            cur[j]=Math.max(take,not_take);
+                
+            }
+            // prev=cur.clone();
+        }
+        
+        
+        return cur[capacity];
+        
+        
+    
+        
+    }
+}
+Complexity Analysis
+Time Complexity: O(n × capacity)
+
+The outer loop runs for n items, and the inner loop runs for capacity + 1. Hence, the overall complexity is proportional to n × capacity.
+Space Complexity: O(capacity)
+
+A single array cur of size capacity + 1 is used to store the maximum profit for each capacity, requiring O(capacity) space.
+
+
+
