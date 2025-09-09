@@ -1,0 +1,63 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.*;
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    public TreeNode(int x) {
+        val = x;
+        left = null;
+        right = null;
+    }
+}
+public class Main
+{
+    public static boolean isLeaf(TreeNode root)
+    {
+        if(root.left==null && root.right==null) return true;
+        return false;
+    }
+    public static boolean check(TreeNode root,ArrayList<Integer>arr,int k)
+    {
+       if(root == null) return false;
+
+        if(isLeaf(root)) {
+        if(root.val == k) {
+            arr.add(root.val); // add leaf value
+            return true;
+        }
+        return false;
+    }
+
+    boolean t1 = check(root.left, arr, k);
+    boolean t2 = check(root.right, arr, k);
+
+    if(t1 || t2) arr.add(root.val);
+
+    return t1 || t2;
+    }
+    
+	public static void main(String[] args) {
+	 TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(5);
+        root.right = new TreeNode(1);
+        root.left.left = new TreeNode(6);
+        root.left.right = new TreeNode(2);
+        root.right.left = new TreeNode(0);
+        root.right.right = new TreeNode(8);
+        root.left.right.left = new TreeNode(7);
+        root.left.right.right = new TreeNode(4);
+        ArrayList<Integer>arr=new ArrayList<Integer>();
+        check(root,arr,7);
+        Collections.reverse(arr);
+        for(int num:arr)
+		System.out.print(num+" ");
+	}
+}
